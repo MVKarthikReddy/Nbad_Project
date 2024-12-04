@@ -13,7 +13,7 @@ const Login = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/api/login', {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/api/login`, {
         username,
         password,
       });
