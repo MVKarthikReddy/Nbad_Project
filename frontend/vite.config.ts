@@ -1,13 +1,3 @@
-// import { defineConfig } from 'vite';
-// import react from '@vitejs/plugin-react';
-
-// // https://vitejs.dev/config/
-// export default defineConfig({
-//   plugins: [react()],
-//   optimizeDeps: {
-//     exclude: ['lucide-react'],
-//   },
-// });
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
@@ -19,6 +9,12 @@ export default defineConfig({
   },
   server: {
     port: 80,
-    strictPort: true, // Ensure Vite doesn't try alternative ports if 80 is taken
+    strictPort: true, 
+  },
+  plugins: [react()],
+  server: {
+    proxy: {
+      '/api': 'http://localhost:3000', // Proxy API calls to the backend
+    },
   },
 });
