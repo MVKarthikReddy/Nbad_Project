@@ -1,26 +1,6 @@
-// import mongoose from 'mongoose';
-
-// const ChartDataSchema = new mongoose.Schema({
-//   title: String,
-//   value: Number,
-//   category: String
-// });
-
-// export const ChartData = mongoose.model('ChartData', ChartDataSchema);
 
 
-// import mongoose from 'mongoose';
-
-// const ChartDataSchema = new mongoose.Schema({
-//   title: String,
-//   value: Number,
-//   category: String,
-// });
-
-// const ChartData = mongoose.model('ChartData', ChartDataSchema);
-// export default ChartData;
-
-import mongoose from 'mongoose';
+const mongoose = require('mongoose')
 
 const ChartDataSchema = new mongoose.Schema({
   title: {
@@ -39,5 +19,5 @@ const ChartDataSchema = new mongoose.Schema({
   name: String 
 });
 
-export default mongoose.model('ChartData', ChartDataSchema);
+module.exports = mongoose.model('ChartData', ChartDataSchema);
 

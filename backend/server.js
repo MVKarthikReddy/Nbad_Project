@@ -1,13 +1,12 @@
-import express from 'express';
-import cors from 'cors';
-import mongoose from 'mongoose';
-import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
-import authRoutes from './routes/auth.js';
-import chartRoutes from './routes/charts.js';
-import connectDB from './config/database.js';
 
-dotenv.config();
+const express = require('express');
+const cors = require('cors');
+const jwt = require('jsonwebtoken')
+const authRoutes = require('./src/routes/auth');
+const chartRoutes = require('./src/routes/charts');
+const connectDB = require('./src/config/database.js');
+
+require('dotenv').config();
 connectDB();
 
 const app = express();
