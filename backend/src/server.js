@@ -10,7 +10,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-  origin: 'http://192.168.1.100' 
+  origin: `process.env.FRONTEND_URL` 
 }));
 app.use(express.json());
 
