@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 const express = require('express');
 const cors = require('cors');
@@ -8,18 +7,7 @@ const chartRoutes = require('./src/routes/charts');
 const connectDB = require('./src/config/database.js');
 
 require('dotenv').config();
-=======
-import express from 'express';
-import cors from 'cors';
-import mongoose from 'mongoose';
-import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
-import authRoutes from './routes/auth.js';
-import chartRoutes from './routes/charts.js';
-import connectDB from './config/database.js';
 
-dotenv.config();
->>>>>>> a9f0088331a915bdc545af2dd367ca67b0e3a9d9
 connectDB();
 
 const app = express();
