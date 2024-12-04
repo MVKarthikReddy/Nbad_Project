@@ -5,13 +5,15 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth.js';
 import chartRoutes from './routes/charts.js';
+import connectDB from './config/database.js';
 
 dotenv.config();
+connectDB();
 
 const app = express();
-app.use(cors({
-  origin: `process.env.FRONTEND_URL` 
-}));
+
+
+app.use(cors());
 app.use(express.json());
 
 // Routes
@@ -21,7 +23,7 @@ app.use('/api/charts', chartRoutes);
 const JWT_SECRET = process.env.JWT_SECRET || 'bhargav123';
 
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://bhargavmodugulla:5jmURP6eLXMFqYr7@cluster0.g2lgb.mongodb.net/b94');
+// mongoose.connect('mongodb+srv://bhargavmodugulla:5jmURP6eLXMFqYr7@cluster0.g2lgb.mongodb.net/b94');
 
 
 const authenticateToken = (req, res, next) => {
@@ -36,6 +38,11 @@ const authenticateToken = (req, res, next) => {
     next();
   });
 };
+
+app.get('/',(req,res) => {
+    res.json("Backend is working fine")
+  }
+)
 
 // Login endpoint
 app.post('/api/login', (req, res) => {
