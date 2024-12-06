@@ -11,10 +11,19 @@ const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff8042', '#a4de6c'];
 const Summary = () => {
   const [data, setData] = useState([]);
 
+  const data02 = [
+    { name: "Baseball", value: 32 },
+    { name: "Basketball", value: 17 },
+    { name: "Soccer", value: 14 },
+    { name: "Volley ball", value: 15 },
+    { name: "Football", value: 45 }
+  ]; 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await api.get('/charts/summary-chart');
+        console.log(response.data);
         setData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -30,16 +39,16 @@ const Summary = () => {
 
       <div className="bg-white p-6 rounded-lg shadow-lg">
         <div className="h-[400px]">
-                  <ResponsiveContainer width="100%" height={400}>
-                      <PieChart>
+                  <ResponsiveContainer width="100%" height={400} >
+                      <PieChart data={data02}>
                         <Pie
-                            data={data}
+                            data={data02}
                             cx="50%"
                             cy="50%"
                             outerRadius={150}
                             fill="#8884d8"
                             dataKey="value"
-                            label
+                            // label={data}
                           >
                             {data.map((entry, index) => (
                               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />

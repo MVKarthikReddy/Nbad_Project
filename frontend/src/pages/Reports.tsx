@@ -9,6 +9,7 @@ const Reports = () => {
     const fetchData = async () => {
       try {
         const response = await api.get('/charts/reports-chart');
+        console.log(response.data)
         setChartData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -17,11 +18,11 @@ const Reports = () => {
 
     fetchData();
   }, []);
-  console.log("hello from reports.tsx",chartData)
+  
 
   return (
     <div>
-      <h1>Reports Chart</h1>
+      <h1 className='font-bold'>Reports Chart</h1>
       <BarChart width={600} height={300} data={chartData}>
         <CartesianGrid stroke="#ccc" />
         <XAxis dataKey="title" />
@@ -29,7 +30,7 @@ const Reports = () => {
         <Tooltip />
         <Bar dataKey="value" fill="#8884d8" />
       </BarChart>
-      <p>
+        <p>
            This Bar Graph displays the total number of games played by each UNCC men's sports team in 2024.
            The size of each Bar represents the proportion of total games for that sport.
          </p>
